@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
 
 html {
   box-sizing: border-box;
@@ -7,38 +8,26 @@ html {
   box-sizing: inherit;
 }
 
-a:link {
-  color: #fff;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-  text-decoration: none;
-}
-a:visited {
-  color: #fff;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-  text-decoration: none;
+h1 {
+  font-family: "Oswald", cursive;
 }
 
+area:focus {
+  outline: 0;
+}
 
-.nav-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+ul {
+  line-height: 120%;
+}
+
+#uiview {
+  padding-top: 5vh;
+}
+
+.workout-div {
+  border-top: solid blue 1px;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
   font-family: "Merriweather", sans-serif;
-  width: 100%;
-  height: 5vh;
-  background-image: url('../images/nav-bar-background.jpg');
-  color: #fff;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-  text-decoration: none;
-  padding: 5px;
-}
-.nav-bar:visited {
-  text-decoration: none;
-}
-
-.uiview {
-  padding-top: 10px;
 }

@@ -1,5 +1,5 @@
 angular.module('fitnessGuide').controller('gymsCtrl', function($scope, mainService) {
-  $scope.test = "TESSSSSTTTTTT YESSSSSSS";
 
-
-})
+  $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+  
+});

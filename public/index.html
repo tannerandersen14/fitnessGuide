@@ -2,19 +2,30 @@
   <html ng-app="fitnessGuide">
 
     <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
       <link rel="stylesheet" href="./css/style.css"/>
     </head>
 
     <body ng-controller="mainCtrl">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand">A Beginner's Guide to Lifting</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="diagram">Diagram</a></li>
+            <li><a ui-sref="user">User</a></li>
+            <li><a ui-sref="gyms">Gyms</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
 
-      <div class="nav-bar">
-        <div class="nav-bar-home"><a ui-sref="home">Home</a></div>
-        <div class="nav-bar-diagram"><a ui-sref="diagram">Diagram</a></div>
-        <div class="nav-bar-user"><a ui-sref="user">User</a></div>
-        <div class="nav-bar-gyms"><a ui-sref="gyms">Find a gym near you!</a></div>
-      </div>
-
-      <div class="uiview" ui-view></div>
+      <div class="container" id="uiview" ui-view></div>
 
     </body>
 
