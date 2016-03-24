@@ -2,87 +2,15 @@
   <div>
     <h1 class="page-header">LATS</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Wide-Grip Pull Up</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/wide-grip-pull-up"><img ng-src="images/lats/widegrippullup.gif"/></a>
-      <ul>
-        <h3>
-          <li>Take a wide grip on a pull-up bar, hanging freely with your arms extended.</li>
-          <li>Pull yourself up by flexing the elbows and pulling with your lats.</li>
-          <li>Pause at the top of the motion before lowering yourself to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Wide-Grip Lat Pulldown</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/wide-grip-lat-pulldown"><img ng-src="images/lats/widegriplatpulldown.gif"/></a>
-      <ul>
-        <h3>
-          <li>Bring your torso back around 30 degrees or so while creating a curvature on your lower back and sticking your chest out.</li>
-          <li>As you breathe out, bring the bar down until it touches your upper chest by drawing the shoulders and the upper arms down and back.</li>
-          <li>The upper torso should remain stationary and only the arms should move.</li>
-          <li>After a second at the contracted position squeezing your shoulder blades together, slowly raise the bar back to the starting position</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Bent-Over Barbell Row</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/bent-over-barbell-row"><img ng-src="images/lats/bentoverbarbellrow.gif"/></a>
-      <ul>
-        <h3>
-          <li>Bend your knees slightly and bring your torso forward, by bending at the waist, while keeping the back straight until it is almost parallel to the floor.</li>
-          <li>While keeping the torso stationary, breathe out and lift the barbell to you. Keep the elbows close to the body and only use the forearms to hold the weight.</li>
-          <li>At the top contracted position, squeeze the back muscles and hold for a brief pause.</li>
-          <li>Slowly lower the barbell back to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>T-Bar Row</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/t-bar-row-with-handle"><img ng-src="images/lats/tbarrow.gif"/></a>
-      <ul>
-        <h3>
-          <li>Position a bar into a landmine or in a corner to keep it from moving.</li>
-          <li>Stand over the bar, and position a Double D row handle around the bar next to the collar. Using your hips and legs, rise to a standing position.</li>
-          <li>Assume a wide stance with your hips back and your chest up. Your arms should be extended.</li>
-          <li>Pull the weight to your upper abdomen by retracting the shoulder blades and flexing the elbows.</li>
-          <li>After a brief pause, return to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Seated Cable Row</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/seated-cable-rows"><img ng-src="images/lats/seatedcablerow.gif"/></a>
-      <ul>
-        <h3>
-          <li>With your arms extended pull back until your torso is at a 90-degree angle from your legs.</li>
-          <li>Your back should be slightly arched and your chest should be sticking out. You should be feeling a nice stretch on your lats as you hold the bar in front of you.</li>
-          <li>Keeping the torso stationary, pull the handles back towards your torso while keeping the arms close to it until you touch the abdominals.</li>
-          <li>Hold that contraction for a second and slowly go back to the original position.</li>
-    </div>
-    <div class="workout-div">
-      <h1>One-Arm Dumbbell Row</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/one-arm-dumbbell-row"><img ng-src="images/lats/onearmdumbbellrow.gif"/></a>
-      <ul>
-        <h3>
-          <li>Place the right leg on top of the end of the bench, bend your torso forward from the waist until your upper body is parallel to the floor, and place your right hand on the bench for support.</li>
-          <li>Use the left hand to pick up the dumbbell on the floor and hold the weight while keeping your lower back straight.</li>
-          <li>Pull the resistance straight up to the side of your chest, keeping your upper arm close to your side and keeping the torso stationary.</li>
-          <li>Slowly lower the resistance straight down to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Bent-Over Two-Dumbbell Row</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/bent-over-two-dumbbell-row"><img ng-src="images/lats/bentoverdumbbellrow.gif"/></a>
-      <ul>
-        <h3>
-          <li>Bend your knees slightly and bring your torso forward by bending at the waist, ensuring your back is straight and near parallel to the floor.</li>
-          <li>While keeping the torso stationary, lift the dumbbells to your side, making sure to pull with your lats.</li>
-          <li>Slowly lower the weight again to the starting position as you inhale.</li>
-        </h3>
-      </ul>
-    </div>
+  <div class="workout-div" ng-repeat="lift in latLifts">
+    <h1>{{lift.name}}</h1>
+    <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+    <ul ng-repeat="dir in lift.directions">
+      <h3>
+        <li>{{dir}}</li>
+        <br />
+      </h3>
+    </ul>
+    <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
   </div>
 </div>

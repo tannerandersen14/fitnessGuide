@@ -1,0 +1,45 @@
+<div>
+  <div>
+    <h1 class="page-header">Admin</h1>
+  </div>
+  <div>
+    <h1>Add a Lift</h1>
+    <br />
+    <form class="form-group" ng-submit="addLift()">
+      <label for="liftType"> Lift Type: </label><br>
+      <select class="form-control" id="sel1" name="liftType" ng-model="newLift.type">
+        <option value="abdominal">Abdominal</option>
+        <option value="bicep">Bicep</option>
+        <option value="calf">Calf</option>
+        <option value="chest">Chest</option>
+        <option value="forearm">Forearm</option>
+        <option value="frontdeltoid">Front Deltoid</option>
+        <option value="glute">Glute</option>
+        <option value="hamstring">Hamstring</option>
+        <option value="hip">Hip</option>
+        <option value="lat">Lat</option>
+        <option value="lowerback">Lowerback</option>
+        <option value="oblique">Oblique</option>
+        <option value="quad">Quad</option>
+        <option value="reardeltoid">Rear Deltoid</option>
+        <option value="trap">Traps</option>
+        <option value="tricep">Triceps</option>
+      </select><br>
+      <input class="form-control" type="text" placeholder="Workout Name Here" ng-model="newLift.name"/><br>
+      <input class="form-control" type="url" placeholder="Video/Information Link Here" ng-model="newLift.link"/><br>
+      <input class="form-control" type="text" placeholder="Image Pathway Here" ng-model="newLift.image"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 1 Here" ng-model="newLift.directions[0]"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 2 Here" ng-model="newLift.directions[1]"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 3 Here" ng-model="newLift.directions[2]"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 4 Here" ng-model="newLift.directions[3]"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 5 Here" ng-model="newLift.directions[4]"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 6 Here" ng-model="newLift.directions[5]"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 7 Here" ng-model="newLift.directions[6]"/><br>
+      <input class="form-control" type="text" placeholder="Instruction 8 Here" ng-model="newLift.directions[7]"/><br>
+      <button type="submit" class="btn btn-primary">Add Lift</button>
+
+    </form>
+
+  </div>
+
+</div>

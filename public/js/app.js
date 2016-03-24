@@ -116,6 +116,11 @@ angular.module('fitnessGuide').config(function($stateProvider, $urlRouterProvide
       templateUrl: './views/login.html',
       controller: 'userCtrl'
     })
+    .state('admin', {
+      url: '/admin',
+      templateUrl: './views/admin.html',
+      controller: 'diagramCtrl'
+    })
 
 
   $urlRouterProvider.otherwise('/');

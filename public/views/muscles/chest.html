@@ -1,101 +1,17 @@
 <div class="chest">
-  <div class="page-header">
-    <h1>CHEST</h1>
+  <div>
+    <h1 class="page-header">CHEST</h1>
   </div>
   <div>
-    <div class="workout-div">
-      <h1 ng-model="barbellBenchPress.name">Barbell Bench Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/barbell-bench-press-medium-grip"><img ng-src="images/chest/benchpress.gif"/></a>
-      <ul>
+    <div class="workout-div" ng-repeat="lift in chestLifts">
+      <h1>{{lift.name}}</h1>
+      <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+      <ul ng-repeat="dir in lift.directions">
         <h3>
-          <li>Lie back on a flat bench. Using a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms, lift the bar from the rack and hold it straight over you with your arms locked. </li>
-          <li>From the starting position, breathe in and begin coming down slowly until the bar touches your middle chest.</li>
-          <li>After a brief pause, push the bar back to the starting position as you breathe out. Lock your arms and squeeze your chest in the contracted position at the top of the motion, hold for a second and then start coming down slowly again.</li>
+          <li>{{dir}}</li>
+          <br />
         </h3>
       </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Dumbbell Bench Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/dumbbell-bench-press"><img ng-src="images/chest/dumbbellbenchpress.gif"/></a>
-      <ul>
-        <h3>
-          <li>Lie down on a flat bench with a dumbbell in each hand resting on top of your thighs. The palms of your hands will be facing each other.</li>
-          <li>Then, using your thighs to help raise the dumbbells up, lift the dumbbells one at a time so that you can hold them in front of you at shoulder width.</li>
-          <li>Once at shoulder width, rotate your wrists forward so that the palms of your hands are facing away from you. The dumbbells should be just to the sides of your chest, with your upper arm and forearm creating a 90 degree angle.</li>
-          <li>Then, as you breathe out, use your chest to push the dumbbells up. Lock your arms at the top of the lift and squeeze your chest, hold for a second and then begin coming down slowly.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Dumbbell Flyes</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/dumbbell-flyes"><img ng-src="images/chest/pecfly.gif"/></a>
-      <ul>
-        <h3>
-          <li>Lie down on a flat bench with a dumbbell on each hand resting on top of your thighs. The palms of your hand will be facing each other.</li>
-          <li>Then using your thighs to help raise the dumbbells, lift the dumbbells one at a time so you can hold them in front of you at shoulder width with the palms of your hands facing each other. </li>
-          <li>With a slight bend on your elbows in order to prevent stress at the biceps tendon, lower your arms out at both sides in a wide arc until you feel a stretch on your chest.</li>
-          <li>Return your arms back to the starting position as you squeeze your chest muscles and breathe out.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Incline Barbell Bench Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/barbell-incline-bench-press-medium-grip"><img ng-src="images/chest/inclinebenchpress.gif"/></a>
-      <ul>
-        <h3>
-          <li>Lay on the bench with your feet flat on the ground, driving through to your hips. Your back should be arched, and your shoulder blades retracted.</li>
-          <li>Take a medium, pronated grip covering the rings on the bar. Remove the bar from the rack, holding the weight above your chest with your arms extended. </li>
-          <li>Lower the bar to the sternum by flexing the elbows. Maintain control and do not bounce the bar off of your chest. Your lats should stay tight and elbows slightly drawn in.</li>
-          <li>After touching your torso with the bar, extend the elbows to return the bar to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Incline Dumbbell Bench Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/incline-dumbbell-press"><img ng-src="images/chest/inclinedumbbellpress.gif"/></a>
-      <ul>
-        <h3>
-          <li>Lay on the bench with your feet flat on the ground, driving through to your hips. Your back should be arched, and your shoulder blades retracted.</li>
-          <li>Take a medium, pronated grip covering the rings on the bar. Remove the bar from the rack, holding the weight above your chest with your arms extended.</li>
-          <li>Lower the bar to the sternum by flexing the elbows. Maintain control and do not bounce the bar off of your chest. Your lats should stay tight and elbows slightly drawn in.</li>
-          <li>After touching your torso with the bar, extend the elbows to return the bar to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Dips: Chest</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/dips-chest-version"><img ng-src="images/chest/chestdips.gif"/></a>
-      <ul>
-        <h3>
-          <li>To get yourself into the starting position, hold your body at arms length (arms locked) above the bars.</li>
-          <li>While breathing in, lower yourself slowly with your torso leaning forward around 30 degrees or so and your elbows flared out slightly until you feel a slight stretch in the chest.</li>
-          <li>Once you feel the stretch, use your chest to bring your body back to the starting position as you breathe out.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Decline Barbell Bench Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/decline-barbell-bench-press"><img ng-src="images/chest/declinebenchpress.gif"/></a>
-      <ul>
-        <h3>
-          <li>Secure your legs at the end of the decline bench and slowly lay down on the bench.</li>
-          <li>Using a medium width grip (a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms), lift the bar from the rack and hold it straight over you with your arms locked.</li>
-          <li>As you breathe in, come down slowly until you feel the bar on your lower chest.</li>
-          <li>After a second pause, bring the bar back to the starting position as you breathe out and push the bar using your chest muscles. Lock your arms and squeeze your chest in the contracted position, hold for a second and then start coming down slowly again.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Cable Crossover</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/cable-crossover"><img ng-src="images/chest/cablecrossover.gif"/></a>
-      <ul>
-        <h3>
-          <li>To get yourself into the starting position, place the pulleys on a high position (above your head), select the resistance to be used and hold the pulleys in each hand.</li>
-          <li>Step forward in front of an imaginary straight line between both pulleys while pulling your arms together in front of you. Your torso should have a small forward bend from the waist.</li>
-          <li>With a slight bend on your elbows in order to prevent stress at the biceps tendon, extend your arms to the side (straight out at both sides) in a wide arc until you feel a stretch on your chest.</li>
-          <li>Return your arms back to the starting position as you breathe out. Make sure to use the same arc of motion used to lower the weights.</li>
-        </h3>
-      </ul>
-    </div>
+      <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
   </div>
-</div>
+  </div>

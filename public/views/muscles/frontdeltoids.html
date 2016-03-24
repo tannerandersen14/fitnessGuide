@@ -2,64 +2,15 @@
   <div>
     <h1 class="page-header">FRONT DELTOIDS</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Standing Overhead Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/standing-military-press"><img ng-src="images/frontdeltoids/standingmilitarypress.gif"/></a>
-      <ul>
+  <div class="workout-div" ng-repeat="lift in frontDeltoidLifts">
+      <h1>{{lift.name}}</h1>
+      <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+      <ul ng-repeat="dir in lift.directions">
         <h3>
-          <li>Grab the barbell using a pronated (palms facing forward) grip. Make sure to grip the bar wider than shoulder width apart from each other.</li>
-          <li>Slightly bend the knees and place the barbell on your collar bone. Lift the barbell up keeping it lying on your chest. Take a step back and position your feet shoulder width apart from each other.</li>
-          <li>Once you pick up the barbell with the correct grip length, lift the bar up over your head by locking your arms. Hold at about shoulder level and slightly in front of your head.</li>
-          <li>Lower the bar down to the collarbone slowly as you inhale.</li>
-          <li>Lift the bar back up to the starting position as you exhale.</li>
+          <li>{{dir}}</li>
+          <br />
         </h3>
       </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Dumbbell Shoulder Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/dumbbell-shoulder-press"><img ng-src="images/frontdeltoids/dumbbellshoulderpress.gif"/></a>
-      <ul>
-        <h3>
-          <li>While holding a dumbbell in each hand, sit on a military press bench or utility bench that has back support. Place the dumbbells upright on top of your thighs.</li>
-          <li>Now raise the dumbbells to shoulder height one at a time using your thighs to help propel them up into position.</li>
-          <li>Make sure to rotate your wrists so that the palms of your hands are facing forward.</li>
-          <li>Exhale and push the dumbbells upward until they touch at the top.</li>
-          <li>After a brief pause at the top contracted position, slowly lower the weights back down to the starting position while inhaling.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Side Lateral Raise</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/side-lateral-raise"><img ng-src="images/frontdeltoids/sidelateralraise.gif"/></a>
-      <ul>
-        <h3>
-          <li>Pick a couple of dumbbells and stand with a straight torso and the dumbbells by your side at arms length with the palms of the hand facing you.</li>
-          <li>While maintaining the torso in a stationary position (no swinging), lift the dumbbells to your side with a slight bend on the elbow and the hands slightly tilted forward as if pouring water in a glass. Continue to go up until you arms are parallel to the floor. Pause for a moment.</li>
-          <li>Lower the dumbbells back down slowly to the starting position as you inhale.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Front Dumbbell Raise</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/front-dumbbell-raise"><img ng-src="images/frontdeltoids/frontdumbbellraise.gif"/></a>
-      <ul>
-        <h3>
-          <li>Stand with a straight torso and the dumbbells on front of your thighs at arms length with the palms of the hand facing your thighs.</li>
-          <li>While maintaining the torso stationary (no swinging), lift the left dumbbell to the front with a slight bend on the elbow and the palms of the hands always facing down. Continue to go up until you arm is slightly above parallel to the floor. Pause for a moment.</li>
-          <li>Now lower the dumbbell back down slowly to the starting position as you simultaneously lift the right dumbbell.</li>
-        </h3>
-      </div>
-    </div>
-    <div class="workout-div">
-      <h1>Upright Barbell Row</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/upright-barbell-row"><img ng-src="images/frontdeltoids/uprightrow.gif"/></a>
-      <ul>
-        <h3>
-          <li>Grasp a barbell with an overhand grip that is slightly less than shoulder width. The bar should be resting on the top of your thighs with your arms extended and a slight bend in your elbows. Your back should also be straight.</li>
-          <li>Exhale and use the sides of your shoulders to lift the bar, raising your elbows up and to the side. Keep the bar close to your body as you raise it. Continue to lift the bar until it nearly touches your chin. Ensure your elbows are always higher than your forearms.</li>
-          <li>Lower the bar back down slowly to the starting position. Inhale as you perform this portion of the movement.</li>
-        </h3>
-      </div>
-    </div>
+      <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
+  </div>
 </div>

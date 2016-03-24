@@ -2,41 +2,15 @@
   <div>
     <h1 class="page-header">FOREARMS</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Finger Curls</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/finger-curls"><img ng-src="images/forearms/fingercurl.gif"/></a>
-      <ul>
+    <div class="workout-div" ng-repeat="lift in forearmLifts">
+      <h1>{{lift.name}}</h1>
+      <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+      <ul ng-repeat="dir in lift.directions">
         <h3>
-          <li>Hold a barbell with both hands and your palms facing up; hands spaced about shoulder width.</li>
-          <li>Place your feet flat on the floor, at a distance that is slightly wider than shoulder width apart.</li>
-          <li>Lower the bar as far as possible by extending the fingers. Allowing the bar to roll down the hands.</li>
-          <li>Catch the bar with the final joint in the fingers.</li>
-          <li>Now curl bar up as high as possible by closing your hands while exhaling.</li>
+          <li>{{dir}}</li>
+          <br />
         </h3>
       </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Barbell Curl Over a Bench</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/palms-up-barbell-wrist-curl-over-a-bench"><img ng-src="images/forearms/wristcurl.gif"/></a>
-      <ul>
-        <h3>
-          <li>Use your arms to grab the barbell with a supinated grip (palms up) and bring them up so that your forearms are resting against the flat bench.</li>
-          <li>Start out by curling your wrist upwards and exhaling.</li>
-          <li>Slowly lower your wrists back down to the starting position while inhaling.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Reverse-Grip Barbell Curl Over a Bench</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/palms-down-wrist-curl-over-a-bench"><img ng-src="images/forearms/reversegripwristcurl.gif"/></a>
-      <ul>
-        <h3>
-          <li>Use your arms to grab the barbell with a pronated grip (palms down) and bring them up so that your forearms are resting against the flat bench.</li>
-          <li>Start out by curling your wrist upwards and exhaling.</li>
-          <li>Slowly lower your wrists back down to the starting position while inhaling.</li>
-        </h3>
-      </ul>
-    </div>
+      <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
   </div>
 </div>

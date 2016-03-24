@@ -2,58 +2,15 @@
   <div>
     <h1 class="page-header">CALVES</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Standing Dumbbell Calf Raise</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/standing-dumbbell-calf-raise"><img ng-src="images/calves/standingdumbbellcalfraise.gif"/></a>
-      <ul>
-        <h3>
-          <li>Place the ball of the foot on a sturdy and stable wooden board (that is around 2-3 inches tall) while your heels extend off and touch the floor.</li>
-          <li>With the toes pointing either straight (to hit all parts equally), inwards (for emphasis on the outer head) or outwards (for emphasis on the inner head)</li>
-          <li>Raise the heels off the floor as you exhale by contracting the calves. Hold the top contraction for a second.</li>
-          <li>As you inhale, go back to the starting position by slowly lowering the heels.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Standing Barbell Calf Raise</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/standing-barbell-calf-raise"><img ng-src="images/calves/standingbarbellcalfraise.gif"/></a>
-      <ul>
-        <h3>
-          <li>Hold on to the bar using both arms at each side and lift it off the rack by first pushing with your legs and at the same time straightening your torso.</li>
-          <li>Step away from the rack and position your legs using a shoulder width medium stance with the toes slightly pointed out.</li>
-          <li>The knees should be kept with a slight bend; never locked.</li>
-          <li>Raise your heels as you breathe out by extending your ankles as high as possible and flexing your calf. Note: Ensure the knees are stationary at all times.</li>
-          <li>Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Seated Calf Raise</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/seated-calf-raise"><img ng-src="images/calves/seatedcalfraise.gif"/></a>
-      <ul>
-        <h3>
-          <li>Sit on the machine and place your toes on the lower portion of the platform provided with the heels extending off.</li>
-          <li>Place your lower thighs under the lever pad, which will need to be adjusted according to the height of your thighs.</li>
-          <li>Lift the lever slightly by pushing your heels up and release the safety bar.</li>
-          <li>Slowly lower your heels by bending at the ankles until the calves are fully stretched.</li>
-          <li>Raise the heels by extending the ankles as high as possible as you contract the calves and breathe out.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Leg-Press Calf Raise</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/calf-press-on-the-leg-press-machine"><img ng-src="images/calves/legpresscalfraise.gif"/></a>
-      <ul>
-        <h3>
-          <li>Using a leg press machine, sit down on the machine and place your legs on the platform directly in front of you.</li>
-          <li>Lower the safety bars holding the weighted platform in place and press the platform all the way up until your legs are fully extended in front of you without locking your knees.</li>
-          <li>Carefully place your toes and balls of your feet on the lower portion of the platform with the heels extending off.</li>
-          <li>Press on the platform by raising your heels as you breathe out by extending your ankles as high as possible and flexing your calf.</li>
-          <li>Go back slowly to the starting position as you breathe in by lowering your heels as you bend the ankles until calves are stretched.</li>
-        </h3>
-      </ul>
-    </div>
+  <div class="workout-div" ng-repeat="lift in calfLifts">
+    <h1>{{lift.name}}</h1>
+    <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+    <ul ng-repeat="dir in lift.directions">
+      <h3>
+        <li>{{dir}}</li>
+        <br />
+      </h3>
+    </ul>
+    <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
   </div>
-
 </div>

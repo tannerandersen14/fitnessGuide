@@ -2,44 +2,15 @@
   <div>
     <h1 class="page-header">LOWERBACK</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Straight-Arm Pulldown</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/straight-arm-pulldown"><img ng-src="images/lowerback/straightarmpulldown.gif"/></a>
-      <ul>
-        <h3>
-          <li>Bend your torso forward at the waist by around 30-degrees with your arms fully extended in front of you and a slight bend at the elbows.</li>
-          <li>Once your arms are fully extended and your torso is slightly bent at the waist, tighten the lats and then you are ready to begin.</li>
-          <li>While keeping the arms straight, pull the bar down by contracting the lats until your hands are next to the side of the thighs.</li>
-          <li>While keeping the arms straight, go back to the starting position while breathing in.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Deficit Barbell Deadlift</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/deficit-deadlift"><img ng-src="images/lowerback/deficitdeadlift.gif"/></a>
-      <ul>
-        <h3>
-          <li>Begin by having a platform or weight plates that you can stand on, usually 1-3 inches in height.</li>
-          <li>You feet should be about hip width apart. Bend at the hip to grip the bar at shoulder width, allowing your shoulder blades to protract.</li>
-          <li>With your feet, and your grip set, take a big breath and then lower your hips and bend the knees until your shins contact the bar.</li>
-          <li>Look forward with your head, keep your chest up and your back arched, and begin driving through the heels to move the weight upward.</li>
-          <li>After the bar passes the knees, aggressively pull the bar back, pulling your shoulder blades together as you drive your hips forward into the bar.</li>
-          <li>Lower the bar by bending at the hips and guiding it to the floor.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Back Extensions</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/hyperextensions-back-extensions"><img ng-src="images/lowerback/backextension.gif"/></a>
-      <ul>
-        <h3>
-          <li>Lie face down on a hyperextension bench, tucking your ankles securely under the footpads.</li>
-          <li>With your body straight, cross your arms in front of you or behind your head.</li>
-          <li>Start bending forward slowly at the waist as far as you can while keeping your back flat.</li>
-          <li>Keep moving forward until you feel a nice stretch on the hamstrings and you can no longer keep going without a rounding of the back.</li>
-          <li>Slowly raise your torso back to the initial position as you inhale.</li>
-        </h3>
-      </ul>
-    </div>
+  <div class="workout-div" ng-repeat="lift in lowerbackLifts">
+    <h1>{{lift.name}}</h1>
+    <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+    <ul ng-repeat="dir in lift.directions">
+      <h3>
+        <li>{{dir}}</li>
+        <br />
+      </h3>
+    </ul>
+    <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
+  </div>
 </div>

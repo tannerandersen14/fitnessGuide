@@ -6,8 +6,8 @@
       <link rel="stylesheet" href="./css/style.css"/>
     </head>
 
-    <body ng-controller="mainCtrl">
-      <nav class="navbar navbar-inverse navbar-fixed-top">
+    <body>
+      <nav ng-controller="diagramCtrl" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand">A Beginner's Guide to Lifting</a>
@@ -17,6 +17,7 @@
             <li><a ui-sref="diagram">Diagram</a></li>
             <li><a ui-sref="user">User</a></li>
             <li><a ui-sref="gyms">Gyms</a></li>
+            <li><a ui-sref="admin">Admin</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -38,6 +39,7 @@
     <script src="./js/controllers/diagramCtrl.js"></script>
     <script src="./js/controllers/userCtrl.js"></script>
     <script src="./js/controllers/gymsCtrl.js"></script>
+    <script src="./js/liftsService.js"></script>
     <script src="./js/mainService.js"></script>
 
   </html>

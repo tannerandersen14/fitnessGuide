@@ -2,39 +2,15 @@
   <div>
     <h1 class="page-header">TRAPS</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Barbell Shrug</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/barbell-shrug"><img ng-src="images/traps/barbellshrug.gif"/></a>
-      <ul>
-        <h3>
-          <li>hold a barbell with both hands in front of you using a pronated grip (palms facing the thighs).</li>
-          <li>Raise your shoulders up as far as you can go as you breathe out and hold the contraction for a second.</li>
-          <li>Slowly return to the starting position as you breathe in.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Dumbbell Shrug</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/dumbbell-shrug"><img ng-src="images/traps/dumbbellshrug.gif"/></a>
-      <ul>
-        <h3>
-          <li>Stand erect with a dumbbell on each hand (palms facing your torso), arms extended on the sides.</li>
-          <li>Lift the dumbbells by elevating the shoulders as high as possible while you exhale. Hold the contraction at the top for a second.</li>
-          <li>Lower the dumbbells back to the original position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Facepull</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/face-pull"><img ng-src="images/traps/facepull.gif"/></a>
-      <ul>
-        <h3>
-          <li>Facing a high pulley with a rope or dual handles attached, pull the weight directly towards your face, separating your hands as you do so.</li>
-          <li>Slowly return to starting position.</li>
-        </h3>
-      </ul>
-    </div>
+  <div class="workout-div" ng-repeat="lift in trapLifts">
+    <h1>{{lift.name}}</h1>
+    <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+    <ul ng-repeat="dir in lift.directions">
+      <h3>
+        <li>{{dir}}</li>
+        <br />
+      </h3>
+    </ul>
+    <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
   </div>
-
 </div>

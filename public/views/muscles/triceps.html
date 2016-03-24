@@ -2,79 +2,15 @@
   <div>
     <h1 class="page-header">TRICEPS</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Skullcrusher</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/ez-bar-skullcrusher"><img ng-src="images/triceps/skullcrusher.gif"/></a>
-      <ul>
-        <h3>
-          <li>lift the EZ bar and hold it with your elbows in as you lie on the bench. Your arms should be perpendicular to the floor.</li>
-          <li>Keeping the upper arms stationary, lower the bar by allowing the elbows to flex.</li>
-          <li>Pause once the bar is directly above the forehead.</li>
-          <li>Lift the bar back to the starting position by extending the elbow and exhaling.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Tricep Pushdown</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/triceps-pushdown-rope-attachment"><img ng-src="images/triceps/tricepextension.gif"/></a>
-      <ul>
-        <h3>
-          <li>Standing upright with the torso straight and a very small inclination forward, bring the upper arms close to your body and perpendicular to the floor.</li>
-          <li>Using the triceps, bring the rope down as you bring each side of the rope to the side of your thighs.</li>
-          <li>At the end of the movement the arms are fully extended and perpendicular to the floor. Note: The upper arms should always remain stationary next to your torso and only the forearms should move.</li>
-          <li>After holding for a second, at the contracted position, bring the rope slowly up to the starting point.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-    <h1>Cable Overhead Tricep Extension</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/cable-rope-overhead-triceps-extension"><img ng-src="images/triceps/overheadtricepextension.gif"/></a>
-      <ul>
-        <h3>
-          <li>Grasping the rope with both hands, extend your arms with your hands directly above your head using a neutral grip.</li>
-          <li>Your elbows should be in close to your head and the arms should be perpendicular to the floor with the knuckles aimed at the ceiling.</li>
-          <li>Slowly lower the rope behind your head as you hold the upper arms stationary. Pause when your triceps are fully stretched.</li>
-          <li>Return to the starting position by flexing your triceps as you breathe out.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-    <h1>Standing Dumbbell Tricep Extension</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/standing-dumbbell-triceps-extension"><img ng-src="images/triceps/standingdumbbelltricepextension.gif"/></a>
-      <ul>
-        <h3>
-          <li>Slowly use both hands to grab the dumbbell and lift it over your head until both arms are fully extended.</li>
-          <li>The resistance should be resting in the palms of your hands with your thumbs around it.</li>
-          <li>Keeping your upper arms close to your head with elbows in and perpendicular to the floor, lower the resistance in a semicircular motion behind your head until your forearms touch your biceps.</li>
-          <li>Go back to the starting position by using the triceps to raise the dumbbell.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Dips: Triceps</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/dips-triceps-version"><img ng-src="images/triceps/dip.gif"/></a>
-      <ul>
-        <h3>
-          <li>To get into the starting position, hold your body at arm's length with your arms nearly locked above the bars.</li>
-          <li>Slowly lower yourself downward. Your torso should remain upright and your elbows should stay close to your body.</li>
-          <li>Lower yourself until there is a 90 degree angle formed between the upper arm and forearm.</li>
-          <li>Push your torso back up using your triceps to bring your body back to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Close-Grip Barbell Bench Press</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/close-grip-barbell-bench-press"><img ng-src="images/triceps/closegripbenchpress.gif"/></a>
-      <ul>
-        <h3>
-          <li>Lie back on a flat bench. Using a close grip (around shoulder width), lift the bar from the rack and hold it straight over you with your arms locked.</li>
-          <li>As you breathe in, come down slowly until you feel the bar on your middle chest.</li>
-          <li>Keep the elbows close to the torso at all times in order to maximize triceps involvement.</li>
-          <li>Bring the bar back to the starting position as you breathe out and push the bar using your triceps muscles.</li>
-        </h3>
-      </ul>
-    </div>
+  <div class="workout-div" ng-repeat="lift in tricepLifts">
+    <h1>{{lift.name}}</h1>
+    <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+    <ul ng-repeat="dir in lift.directions">
+      <h3>
+        <li>{{dir}}</li>
+        <br />
+      </h3>
+    </ul>
+    <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
   </div>
-
 </div>

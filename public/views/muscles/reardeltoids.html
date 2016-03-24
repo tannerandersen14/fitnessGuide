@@ -2,40 +2,15 @@
   <div>
     <h1 class="page-header">REAR DELTOIDS</h1>
   </div>
-  <div>
-    <div class="workout-div">
-      <h1>Reverse Flyes</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/reverse-flyes"><img ng-src="images/reardeltoids/reversefly.gif"/></a>
-      <ul>
-        <h3>
-          <li>To begin, lie down on an incline bench with the chest and stomach pressing against the incline.</li>
-          <li>Extend the arms in front of you so that they are perpendicular to the angle of the bench.</li>
-          <li>Maintaining the slight bend of the elbows, move the weights out and away from each other (to the side) in an arc motion while exhaling.</li>
-          <li>The arms should be elevated until they are parallel to the floor.</li>
-          <li>Feel the contraction and slowly lower the weights back down to the starting position while inhaling.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Cable Reverse Flyes</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/cable-rear-delt-fly"><img ng-src="images/reardeltoids/cablereversefly.gif"/></a>
-      <ul>
-        <h3>
-          <li>Adjust the pulleys to the appropriate height and adjust the weight. The pulleys should be above your head.</li>
-          <li>Grab the left pulley with your right hand and the right pulley with your left hand, crossing them in front of you.</li>
-          <li>Initiate the movement by moving your arms back and outward, keeping your arms straight as you execute the movement.</li>
-          <li>Pause at the end of the motion before returning the handles to the start position.</li>
-        </h3>
-      </ul>
-    </div>
-    <div class="workout-div">
-      <h1>Seated Bent-Over Rear Delt Raise</h1>
-      <a href="http://www.bodybuilding.com/exercises/detail/view/name/seated-bent-over-rear-delt-raise"><img ng-src="images/reardeltoids/seatedbentoverreardeltraise.gif"/></a>
-      <ul>
-        <h3>
-          <li>Keeping your torso forward and stationary, and the arms slightly bent at the elbows, lift the dumbbells straight to the side until both arms are parallel to the floor.</li>
-          <li>After a one second contraction at the top, slowly lower the dumbbells back to the starting position.</li>
-        </h3>
-      </ul>
-    </div>
+  <div class="workout-div" ng-repeat="lift in rearDeltoidLifts">
+    <h1>{{lift.name}}</h1>
+    <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
+    <ul ng-repeat="dir in lift.directions">
+      <h3>
+        <li>{{dir}}</li>
+        <br />
+      </h3>
+    </ul>
+    <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
+  </div>
 </div>
