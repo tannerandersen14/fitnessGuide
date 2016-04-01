@@ -39,7 +39,21 @@
       <button type="submit" class="btn btn-primary">Add Lift</button>
 
     </form>
-
+    <div class="admin-template-lifts">
+      <div ng-repeat="list in templateLifts" class="template-lift">
+        <span ng-repeat="id in list.user">User ID: {{id}}</span>
+        <h3>{{list.templateName}}</h3>
+        <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+        <div ng-repeat="lift in list.lifts">
+          <h4>{{lift.name}}</h4>
+          Sets: {{lift.sets}}
+          Reps: {{lift.reps}}
+          <ul ng-show="directions" ng-repeat="direction in lift.directions">
+            <li>{{direction}}</li>
+          </ul>
+        </div>
+      <button class="btn btn-danger" ng-click="deleteTemplateLift(list._id)">Delete List</button>
+    </div>
   </div>
 
 </div>

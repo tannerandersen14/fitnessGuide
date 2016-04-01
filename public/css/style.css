@@ -3,9 +3,44 @@
 
 html {
   box-sizing: border-box;
+  overflow: auto;
 }
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+body {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    padding: 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4);
 }
 
 h1 {
@@ -20,8 +55,9 @@ ul {
   line-height: 120%;
 }
 
+
 #uiview {
-  padding-top: 5vh;
+  padding-top: 75px;
 }
 
 .workout-div {
@@ -30,4 +66,59 @@ ul {
   text-align: center;
   padding: 10px;
   font-family: "Merriweather", sans-serif;
+}
+
+.template-lifts {
+  margin: auto;
+  height: 50vh;
+  width: 45%;
+  overflow-y: auto;
+  border: solid black 3px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.template-lift {
+  border-top: solid blue 1px;
+  padding: 15px;
+  border: solid blue 1px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.admin-template-lifts {
+  margin: auto;
+  height: 70vh;
+  width: 90%;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.week-div-container {
+  height: 60vh;
+  min-height: 45vh;
+  width: 100%;
+}
+.week-divs {
+  display: flex;
+  justify-content: space-around;
+}
+.week-div {
+  margin: 2.5px;
+  height: 45vh;
+  width: 285px;
+  overflow-y: auto;
+  padding: 5px;
+  border: black solid 5px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 285px;
+  flex-flow: wrap;
+}
+
+@media (max-width: 700px) {
+  .week-divs {
+    justify-content: center;
+    flex-flow: column;
+  }
 }

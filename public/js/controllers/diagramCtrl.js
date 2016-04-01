@@ -1,5 +1,7 @@
-angular.module('fitnessGuide').controller('diagramCtrl', function($scope, mainService, liftService) {
+angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state, mainService, liftService, AuthService) {
 
+  $scope.userLogged = AuthService.isLoggedIn();
+  $scope.newLift = {};
   $scope.abdominalLifts = liftService.abdominalLifts;
   $scope.bicepLifts = liftService.bicepLifts;
   $scope.calfLifts = liftService.calfLifts;
@@ -21,6 +23,40 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, mainSe
   $scope.newLift.link = '';
   $scope.newLift.image = '';
   $scope.newLift.directions = [];
+  $scope.admin = mainService.admin;
+  $scope.templateLifts = mainService.templateLifts;
+  $scope.directions = mainService.directions;
+  $scope.$watch($scope.directions);
+  $scope.liftDay = {};
+
+  $scope.getTemplateLift = function() {
+    mainService.getTemplateLift().then(function(response) {
+      mainService.templateLifts = response.data;
+      console.log(response.data)
+    })
+  }
+  $scope.getTemplateLift();
+
+  $scope.deleteTemplateLift = function(id) {
+    mainService.deleteTemplateLift(id).then(function(response) {
+      for (var i = 0; i < $scope.templateLifts.length; i++) {
+        if ($scope.templateLifts[i]._id === id) {
+          $scope.templateLifts.splice(i, 1);
+        }
+      }
+    })
+    for (var x = 0; x < mainService.currentUser.templateLifts.length; x++) {
+      if (id === mainService.currentUser.templateLifts[x]) {
+        mainService.currentUser.templateLifts.splice(x, 1);
+        mainService.updateUser();
+      }
+    }
+  }
+
+  $scope.addToTemplate = function(data) {
+    mainService.newTemplateLift.lifts.push(data);
+    $scope.newLift = {};
+  }
 
   $scope.removeDup = function(arr) {
     arr.sort()
@@ -33,6 +69,93 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, mainSe
     }
     return arr;
   }
+
+  $scope.checkForAdmin = function() {
+    mainService.checkForAdmin()
+  }
+
+  $scope.showDirections = function() {
+    if (mainService.directions === false) {
+      mainService.directions = true;
+      $state.reload();
+      console.log(mainService.directions)
+    } else {
+      mainService.directions = false;
+      $state.reload();
+      console.log(mainService.directions)
+    }
+  }
+
+  $scope.addUserLift = function(lift, day) {
+      if ($scope.liftDay.day === 'sunday') {
+      mainService.currentUser.sundayLifts.push(lift);
+      console.log(mainService.currentUser)
+      mainService.addUserLift().then(function(response) {
+        console.log('okay');
+        $scope.newLift = {};
+        $scope.liftDay = {};
+      })
+    }
+      else if ($scope.liftDay.day === 'monday') {
+      mainService.currentUser.mondayLifts.push(lift);
+      console.log(mainService.currentUser)
+      mainService.addUserLift().then(function(response) {
+        console.log('okay');
+        $scope.newLift = {};
+        $scope.liftDay = {};
+      })
+    }
+      else if ($scope.liftDay.day === 'tuesday') {
+      mainService.currentUser.tuesdayLifts.push(lift);
+      console.log(mainService.currentUser)
+      mainService.addUserLift().then(function(response) {
+        console.log('okay');
+        $scope.newLift = {};
+        $scope.liftDay = {};
+      })
+    }
+      else if ($scope.liftDay.day === 'wednesday') {
+      mainService.currentUser.wednesdayLifts.push(lift);
+      console.log(mainService.currentUser)
+      mainService.addUserLift().then(function(response) {
+        console.log('okay');
+        $scope.newLift = {};
+        $scope.liftDay = {};
+      })
+    }
+      else if ($scope.liftDay.day === 'thursday') {
+      mainService.currentUser.thursdayLifts.push(lift);
+      console.log(mainService.currentUser)
+      mainService.addUserLift().then(function(response) {
+        console.log('okay');
+        $scope.newLift = {};
+        $scope.liftDay = {};
+      })
+    }
+      else if ($scope.liftDay.day === 'friday') {
+      mainService.currentUser.fridayLifts.push(lift);
+      console.log(mainService.currentUser)
+      mainService.addUserLift().then(function(response) {
+        console.log('okay');
+        $scope.newLift = {};
+        $scope.liftDay = {};
+      })
+    }
+      else if ($scope.liftDay.day === 'saturday') {
+      mainService.currentUser.saturdayLifts.push(lift);
+      console.log(mainService.currentUser)
+      mainService.addUserLift().then(function(response) {
+        console.log('okay');
+        $scope.newLift = {};
+        $scope.liftDay = {};
+      })
+    } else if ($scope.liftDay.day === '') {
+      alert('Please select a day');
+    }
+  }
+
+  $scope.isLoggedIn = AuthService.isLoggedIn;
+  $scope.isLoggedIn();
 
   $scope.deleteLift = function(id) {
     mainService.deleteLift(id).then(function(response) {

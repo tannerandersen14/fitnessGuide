@@ -1,6 +1,152 @@
-<div class="user-overview">
+<div class="container">
+  <form ng-submit="makeUserAdmin()">
+    <input class="form-group" placeholder="Become Admin" ng-model="adminPassword"/>
+  </form>
+  <div class="user-overview">
+    <button ng-controller="logoutController" class="btn btn-info" ng-show="userLogged"><a ui-sref="login" ng-click='logout()'>Log out</a></button>
+  </div>
   <div>
-    <h1>This is where all the user information will be located</h1>
-    {{test}}
+    <h1 class="page-header">{{currentUser.username}}</h1>
+    <div class="week-div-container">
+      <div class="week-divs">
+        <div class="week-div">
+          <h1>Sunday</h1>
+          <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+          <div ng-repeat="lift in currentUser.sundayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserSundayLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="week-div">
+          <h1>Monday</h1>
+          <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+          <div ng-repeat="lift in currentUser.mondayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserMondayLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="week-div">
+          <h1>Tuesday</h1>
+          <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+          <div ng-repeat="lift in currentUser.tuesdayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserTuesdayLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="week-div">
+          <h1>Wednesday</h1>
+          <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+          <div ng-repeat="lift in currentUser.wednesdayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserWednesdayLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="week-div">
+          <h1>Thursday</h1>
+          <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+          <div ng-repeat="lift in currentUser.thursdayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserThursdayLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="week-div">
+          <h1>Friday</h1>
+          <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+          <div ng-repeat="lift in currentUser.fridayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserFridayLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="week-div">
+          <h1>Saturday</h1>
+          <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+          <div ng-repeat="lift in currentUser.saturdayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserSaturdayLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="week-divs">
+        <div class="template-lifts">
+          <h1>My Lift</h1>
+
+          <button class="btn btn-success" type="submit" ng-click="addTemplateList()">Add To My Lifts</button>
+          <button class="btn btn-danger" type="submit" ng-click="clearTemplate()">Clear List</button>
+          <input placeholder="Template Name" type="text" class="form-control" ng-model="currentTemplate.templateName"/>
+          <div ng-repeat="lift in currentTemplate.lifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeTemplateLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="template-lifts">
+          <h1>My Lifts</h1>
+          <div ng-repeat="list in userPageUser.templateLifts" class="template-lift">
+            <h3>{{list.templateName}}</h3>
+            <form>
+              <select class="form-control" id="sel1" name="liftDay" ng-model="liftDay.day">
+                <option value="sunday">Sunday</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+              </select>
+              <button class="btn btn-primary" type="submit" ng-click="addTemplateToUserLift(list.lifts)">Add to Day</button>
+            </form>
+            <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+            <div ng-repeat="lift in list.lifts">
+              <h4>{{lift.name}}</h4>
+              Sets: {{lift.sets}}
+              Reps: {{lift.reps}}
+              <ul ng-show="directions" ng-repeat="direction in lift.directions">
+                <li>{{direction}}</li>
+              </ul>
+            </div>
+          <button class="btn btn-danger" ng-click="deleteTemplateLift(list._id)">Delete List</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

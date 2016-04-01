@@ -6,124 +6,164 @@ angular.module('fitnessGuide').config(function($stateProvider, $urlRouterProvide
     .state('home', {
       url: '/',
       templateUrl: './views/home.html',
-      controller: 'homeCtrl'
+      controller: 'homeCtrl',
+      access: {restricted: false}
     })
     .state('diagram', {
       url: '/diagram',
       templateUrl: './views/diagram.html',
-      controller: 'diagramCtrl'
+      controller: 'diagramCtrl',
+      access: {restricted: false}
     })
       //Diagram states
       .state('chest', {
         url: '/diagram/chest',
         templateUrl: './views/muscles/chest.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('front-deltoids', {
         url: '/diagram/frontdeltoids',
         templateUrl: './views/muscles/frontdeltoids.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('rear-deltoids', {
         url: '/diagram/reardeltoids',
         templateUrl: './views/muscles/reardeltoids.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('abdominals', {
         url: '/diagram/abdominals',
         templateUrl: './views/muscles/abdominals.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('obliques', {
         url: '/diagram/obliques',
         templateUrl: './views/muscles/obliques.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('quads', {
         url: '/diagram/quads',
         templateUrl: './views/muscles/quads.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('hips', {
         url: '/diagram/hips',
         templateUrl: './views/muscles/hips.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('biceps', {
         url: '/diagram/biceps',
         templateUrl: './views/muscles/biceps.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('forearms', {
         url: '/diagram/forearms',
         templateUrl: './views/muscles/forearms.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('traps', {
         url: '/diagram/traps',
         templateUrl: './views/muscles/traps.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('triceps', {
         url: '/diagram/triceps',
         templateUrl: './views/muscles/triceps.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('lats', {
         url: '/diagram/lats',
         templateUrl: './views/muscles/lats.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('lower-back', {
         url: '/diagram/lowerback',
         templateUrl: './views/muscles/lowerback.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('glutes', {
         url: '/diagram/glutes',
         templateUrl: './views/muscles/glutes.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('hamstrings', {
         url: '/diagram/hamstrings',
         templateUrl: './views/muscles/hamstrings.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
       .state('calves', {
         url: '/diagram/calves',
         templateUrl: './views/muscles/calves.html',
-        controller: 'diagramCtrl'
+        controller: 'diagramCtrl',
+        access: {restricted: false}
       })
 
 
     .state('user', {
       url: '/user',
       templateUrl: './views/user.html',
-      controller: 'userCtrl'
+      controller: 'loginController',
+      access: {restricted: true}
     })
     .state('gyms', {
       url: '/gyms',
       templateUrl: './views/gyms.html',
-      controller: 'gymsCtrl'
+      controller: 'gymsCtrl',
+      access: {restricted: false}
     })
     .state('signup', {
       url: '/signup',
       templateUrl: './views/signup.html',
-      controller: 'userCtrl'
+      controller: 'registerController',
+      access: {restricted: false}
     })
     .state('login', {
       url: '/login',
       templateUrl: './views/login.html',
-      controller: 'userCtrl'
+     controller: 'loginController',
+     access: {restricted: false}
     })
     .state('admin', {
       url: '/admin',
       templateUrl: './views/admin.html',
-      controller: 'diagramCtrl'
+      controller: 'diagramCtrl',
+      access: {restricted: true},
+      resolve: {
+        security: ['$q', 'mainService', function($q, mainService) {
+          if (mainService.currentUser.admin === false) {
+            return $q.reject('Not Authorized');
+          }
+        }]
+      }
     })
 
 
   $urlRouterProvider.otherwise('/');
-
-
 })
+
+angular.module('fitnessGuide').run(function ($state, $rootScope, $location, AuthService) {
+  $rootScope.$on('$stateChangeStart',
+    function (event, next, current) {
+      AuthService.getUserStatus();
+      if (next.access.restricted &&
+          !AuthService.isLoggedIn()) {
+            event.preventDefault();
+            $state.go('login')
+      }
+  });
+});

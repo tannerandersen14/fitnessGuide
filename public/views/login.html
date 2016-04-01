@@ -1,3 +1,25 @@
-<div>
-  <h1 class="page-header">Login with your things!</h1>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+  <h1 class="page-header">Login</h1>
+  <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+  <form class="form" ng-submit="login()" ngDisabled="isLoggedIn()">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" name="username" ng-model="loginForm.username" required>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+        <input type="password" class="form-control" name="password" ng-model="loginForm.password" required>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-default" ng-disabled="disabled">Login</button>
+        <br />
+      </div>
+  </form>
+    <p>Need an account? <a ui-sref="signup">Signup</a></p>
+    <p>Or go <a ui-sref="home">home</a>.</p>
+
+</div>
 </div>

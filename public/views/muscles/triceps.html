@@ -11,6 +11,21 @@
         <br />
       </h3>
     </ul>
-    <button class="btn btn-primary" type="Submit" ng-click="deleteLift(lift._id)">Delete</button>
+    <div class="form-inline" ng-show='isLoggedIn()'>
+      <button class="btn btn-primary" type="Submit" ng-show="admin" ng-click="deleteLift(lift._id)">Delete</button>
+      <select class="form-control" id="sel1" name="liftDay" ng-model="liftDay.day">
+        <option value="sunday">Sunday</option>
+        <option value="monday">Monday</option>
+        <option value="tuesday">Tuesday</option>
+        <option value="wednesday">Wednesday</option>
+        <option value="thursday">Thursday</option>
+        <option value="friday">Friday</option>
+        <option value="saturday">Saturday</option>
+      </select>
+      <input  type="number" placeholder="Number of sets" ng-model="newLift.sets">
+      <input type="number" placeholder="Number of reps" ng-model="newLift.reps">
+      <button class="btn btn-success" type="Submit" ng-click="addUserLift({name: lift.name, sets: newLift.sets, reps: newLift.reps, directions: lift.directions})">Add Lift</button>
+      <button class="btn btn-info" type="Submit" ng-click="addToTemplate({name: lift.name, sets: newLift.sets, reps: newLift.reps, directions: lift.directions})">Add to List</button>
+    </div>
   </div>
 </div>

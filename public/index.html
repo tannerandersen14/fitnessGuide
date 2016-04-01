@@ -3,30 +3,33 @@
 
     <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.5/bootstrap-slider.js"/>
       <link rel="stylesheet" href="./css/style.css"/>
     </head>
 
     <body>
-      <nav ng-controller="diagramCtrl" class="navbar navbar-inverse navbar-fixed-top">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand">A Beginner's Guide to Lifting</a>
           </div>
           <ul class="nav navbar-nav">
             <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="diagram">Diagram</a></li>
+            <li ng-controller="diagramCtrl"><a ui-sref="diagram">Diagram</a></li>
             <li><a ui-sref="user">User</a></li>
             <li><a ui-sref="gyms">Gyms</a></li>
-            <li><a ui-sref="admin">Admin</a></li>
+            <li ng-controller="diagramCtrl"><a ui-sref="admin">Admin</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" ng-controller="loginController">
             <li><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a ui-sref="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a ui-sref="user"><span class="glyphicon glyphicon-user"></span>{{currentUser.username}}</a></li>
           </ul>
         </div>
+
       </nav>
 
-      <div class="container" id="uiview" ui-view></div>
+        <div  class="container" id="uiview" ui-view></div>
 
     </body>
 
@@ -39,7 +42,11 @@
     <script src="./js/controllers/diagramCtrl.js"></script>
     <script src="./js/controllers/userCtrl.js"></script>
     <script src="./js/controllers/gymsCtrl.js"></script>
+    <script src="./js/controllers/AuthController.js"></script>
     <script src="./js/liftsService.js"></script>
     <script src="./js/mainService.js"></script>
+    <script src="./js/AuthService.js"></script>
+
+
 
   </html>
