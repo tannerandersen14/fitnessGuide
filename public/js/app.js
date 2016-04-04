@@ -151,6 +151,48 @@ angular.module('fitnessGuide').config(function($stateProvider, $urlRouterProvide
         }]
       }
     })
+    .state('sunday', {
+      url: '/user/sunday',
+      templateUrl: './views/days/sunday.html',
+      controller: 'loginController',
+      access: {restricted: true}
+    })
+    .state('monday', {
+      url: '/user/monday',
+      templateUrl: './views/days/monday.html',
+      controller: 'loginController',
+      access: {restricted: true}
+    })
+    .state('tuesday', {
+      url: '/user/tuesday',
+      templateUrl: './views/days/tuesday.html',
+      controller: 'loginController',
+      access: {restricted: true}
+    })
+    .state('wednesday', {
+      url: '/user/wednesday',
+      templateUrl: './views/days/wednesday.html',
+      controller: 'loginController',
+      access: {restricted: true}
+    })
+    .state('thursday', {
+      url: '/user/thursday',
+      templateUrl: './views/days/thursday.html',
+      controller: 'loginController',
+      access: {restricted: true}
+    })
+    .state('friday', {
+      url: '/user/friday',
+      templateUrl: './views/days/friday.html',
+      controller: 'loginController',
+      access: {restricted: true}
+    })
+    .state('saturday', {
+      url: '/user/saturday',
+      templateUrl: './views/days/saturday.html',
+      controller: 'loginController',
+      access: {restricted: true}
+    })
 
 
   $urlRouterProvider.otherwise('/');

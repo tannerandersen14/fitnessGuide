@@ -1,0 +1,20 @@
+<div class="abdominals">
+  <h1 class="page-header">Wednesday</h1>
+  <button class="btn btn-danger" type="submit" ng-click="clearUserWednesdayLift()">Clear Day</button>
+  <button class="btn btn-info" ng-click="showDirections()">Show Directions</button>
+  <button class="btn btn-primary" ng-click="showImage()">Show Images</button>
+  <div class="workout-div" ng-repeat="lift in currentUser.wednesdayLifts">
+    <h1>{{lift.name}}</h1>
+    <h4>{{lift.sets}} Sets</h4>
+    <h4>{{lift.reps}} Reps</h4>
+    <img ng-show="image" ng-src="{{lift.image}}"/>
+    <br />
+    <ul ng-show="directions" ng-repeat="dir in lift.directions">
+      <h3>
+        <li>{{dir}}</li>
+        <br />
+      </h3>
+    </ul>
+    <button class="btn btn-warning" type="submit" ng-click="removeUserWednesdayLift(lift)">Remove Lift</button>
+  </div>
+</div>

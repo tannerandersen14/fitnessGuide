@@ -10,6 +10,7 @@ angular.module('fitnessGuide').controller('loginController',
     $scope.directions = mainService.directions;
     $scope.userPageUser = mainService.userPageUser;
     $scope.liftDay = {};
+    $scope.image = mainService.image;
 
 
     $scope.addTemplateToUserLift = function(lift) {
@@ -108,11 +109,18 @@ angular.module('fitnessGuide').controller('loginController',
       if (mainService.directions === false) {
         mainService.directions = true;
         $state.reload();
-        console.log(mainService.directions)
       } else {
         mainService.directions = false;
         $state.reload();
-        console.log(mainService.directions)
+      }
+    }
+    $scope.showImage = function() {
+      if (mainService.image === false) {
+        mainService.image = true;
+        $state.reload();
+      } else {
+        mainService.image = false;
+        $state.reload();
       }
     }
 
@@ -185,6 +193,7 @@ angular.module('fitnessGuide').controller('loginController',
       mainService.removeUserLift().then(function(response) {
       })
     }
+
     $scope.removeUserTuesdayLift = function(lift) {
       for (var i = 0; i < mainService.currentUser.tuesdayLifts.length; i++) {
         if (lift === mainService.currentUser.tuesdayLifts[i]) {
@@ -230,6 +239,48 @@ angular.module('fitnessGuide').controller('loginController',
       mainService.removeUserLift().then(function(response) {
       })
     }
+    $scope.clearUserSundayLift = function() {
+      mainService.currentUser.sundayLifts.splice(0, mainService.currentUser.sundayLifts.length);
+      mainService.removeUserLift().then(function(response) {
+
+      })
+    }
+    $scope.clearUserMondayLift = function() {
+      mainService.currentUser.mondayLifts.splice(0, mainService.currentUser.mondayLifts.length);
+      mainService.removeUserLift().then(function(response) {
+
+      })
+    }
+    $scope.clearUserTuesdayLift = function() {
+      mainService.currentUser.tuesdayLifts.splice(0, mainService.currentUser.tuesdayLifts.length);
+      mainService.removeUserLift().then(function(response) {
+
+      })
+    }
+    $scope.clearUserWednesdayLift = function() {
+      mainService.currentUser.wednesdayLifts.splice(0, mainService.currentUser.wednesdayLifts.length);
+      mainService.removeUserLift().then(function(response) {
+
+      })
+    }
+    $scope.clearUserThursdayLift = function() {
+      mainService.currentUser.thursdayLifts.splice(0, mainService.currentUser.thursdayLifts.length);
+      mainService.removeUserLift().then(function(response) {
+
+      })
+    }
+    $scope.clearUserFridayLift = function() {
+      mainService.currentUser.fridayLifts.splice(0, mainService.currentUser.fridayLifts.length);
+      mainService.removeUserLift().then(function(response) {
+
+      })
+    }
+    $scope.clearUserSaturdayLift = function() {
+      mainService.currentUser.saturdayLifts.splice(0, mainService.currentUser.saturdayLifts.length);
+      mainService.removeUserLift().then(function(response) {
+
+      })
+    }
 
     $scope.login = function () {
       $scope.error = false;
@@ -264,6 +315,7 @@ angular.module('fitnessGuide').controller('logoutController',
       AuthService.logout()
         .then(function () {
           mainService.currentUser = {};
+          mainService.userPageUser = {};
           $location.path('login');
         });
         console.log('logout')

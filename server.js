@@ -231,6 +231,15 @@ app.get('/api/lifts', function(req,res) {
     return res.send(s);
   });
 });
+app.get('api/lift', function(req, res) {
+  Lift.find(req.query.name, function(err, s) {
+    if (err) {
+      return res.status(500).json(err);
+    } else {
+      return res.status(200).json(s);
+    }
+  });
+});
 app.delete('/api/lifts', function(req, res) {
   Lift.findByIdAndRemove(req.query.id, function(err, response) {
     if (err) {

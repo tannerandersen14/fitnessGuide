@@ -10,6 +10,7 @@ angular.module('fitnessGuide').service('mainService', function($q, $http) {
   this.templateLifts = [];
   this.directions = false;
   this.userPageUser = {};
+  this.image = false;
 
   this.checkForAdmin = function() {
     if (this.currentUser.admin === true) {
@@ -39,6 +40,7 @@ angular.module('fitnessGuide').service('mainService', function($q, $http) {
   this.getTemplateLift = function() {return $http.get('/user/lifts')};
   this.updateUser = function() {return $http.put('/user?id=' + this.currentUser._id, this.currentUser)}
   this.getUser = function() {return $http.get('/user/lifts/user?username=' + this.currentUser.username)}
+  this.getSpecificLift = function(name) {return $http.get('/user/lift?name=' + name)};
 
 
 

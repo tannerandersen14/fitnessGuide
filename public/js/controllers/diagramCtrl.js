@@ -86,7 +86,7 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
     }
   }
 
-  $scope.addUserLift = function(lift, day) {
+  $scope.addUserLift = function(lift) {
       if ($scope.liftDay.day === 'sunday') {
       mainService.currentUser.sundayLifts.push(lift);
       console.log(mainService.currentUser)
@@ -173,6 +173,12 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
       $scope.newLift.image = '';
       $scope.newLift.directions = [];
 
+    })
+  }
+
+  $scope.getSpecificLift = function(name) {
+    mainService.getSpecificLift(name).then(function(response) {
+      $scope.specificLift = response.data;
     })
   }
 
