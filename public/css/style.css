@@ -10,12 +10,6 @@ html {
 }
 
 body {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    bottom: 20px;
-    right: 20px;
-    padding: 30px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -111,9 +105,13 @@ ul {
   flex-flow: wrap;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .week-divs {
+    display: flex;
     justify-content: center;
     flex-flow: column;
+  }
+  .week-div {
+    width: 100%;
   }
 }

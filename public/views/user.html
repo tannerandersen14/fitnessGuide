@@ -90,21 +90,7 @@
             <button class="btn btn-warning" type="submit" ng-click="removeUserFridayLift(lift)">Remove Lift</button>
           </div>
         </div>
-        <div class="week-div">
-          <a ui-sref="saturday"><h1>Saturday</h1></a>
-          <button class="btn btn-danger" type="submit" ng-click="clearUserSaturdayLift()">Clear Day</button>
-          <div ng-repeat="lift in currentUser.saturdayLifts">
-            <h3>{{lift.name}}</h3>
-            <h4>{{lift.sets}} Sets</h4>
-            <h4>{{lift.reps}} Reps</h4>
-            <ul ng-show="directions" ng-repeat="dir in lift.directions">
-              <li>{{dir}}</li>
-            </ul>
-            <button class="btn btn-warning" type="submit" ng-click="removeUserSaturdayLift(lift)">Remove Lift</button>
-          </div>
-        </div>
       </div>
-    </div>
       <div class="week-divs">
         <div class="template-lifts">
           <h1>My Lift</h1>
@@ -119,6 +105,19 @@
               <li>{{dir}}</li>
             </ul>
             <button class="btn btn-warning" type="submit" ng-click="removeTemplateLift(lift)">Remove Lift</button>
+          </div>
+        </div>
+        <div class="week-div">
+          <a ui-sref="saturday"><h1>Saturday</h1></a>
+          <button class="btn btn-danger" type="submit" ng-click="clearUserSaturdayLift()">Clear Day</button>
+          <div ng-repeat="lift in currentUser.saturdayLifts">
+            <h3>{{lift.name}}</h3>
+            <h4>{{lift.sets}} Sets</h4>
+            <h4>{{lift.reps}} Reps</h4>
+            <ul ng-show="directions" ng-repeat="dir in lift.directions">
+              <li>{{dir}}</li>
+            </ul>
+            <button class="btn btn-warning" type="submit" ng-click="removeUserSaturdayLift(lift)">Remove Lift</button>
           </div>
         </div>
         <div class="template-lifts">
@@ -149,6 +148,7 @@
             </div>
           <button class="btn btn-danger" ng-click="deleteTemplateLift(list._id)">Delete List</button>
         </div>
+      </div>
       </div>
     </div>
   </div>
