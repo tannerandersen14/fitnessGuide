@@ -1,6 +1,6 @@
 angular.module('fitnessGuide').factory('AuthService',
-  ['$q', '$timeout', '$http', '$state',
-  function ($q, $timeout, $http, $state) {
+  ['$q', '$timeout', '$http', '$state', '$localStorage',
+  function ($q, $timeout, $http, $state, $localStorage) {
 
     // create user variable
     var user = null;
@@ -22,7 +22,7 @@ angular.module('fitnessGuide').factory('AuthService',
       }
     }
 
-    
+
 
     function getUserStatus() {
       $http.get('/user/status')
@@ -47,8 +47,8 @@ angular.module('fitnessGuide').factory('AuthService',
         .success(function (data, status) {
           if(status === 200 && data.status){
             user = true;
-            this.currentUser = data.user;
-            deferred.resolve(this.currentUser);
+            $localStorage.currentUser = data.user;
+            deferred.resolve($localStorage.currentUser);
           } else {
             user = false;
             deferred.reject();

@@ -1,4 +1,4 @@
-angular.module('fitnessGuide', ['ui.router'])
+angular.module('fitnessGuide', ['ui.router', 'ngStorage'])
 
 angular.module('fitnessGuide').config(function($stateProvider, $urlRouterProvider) {
 
@@ -198,12 +198,12 @@ angular.module('fitnessGuide').config(function($stateProvider, $urlRouterProvide
   $urlRouterProvider.otherwise('/');
 })
 
-angular.module('fitnessGuide').run(function ($state, $rootScope, $location, AuthService) {
+angular.module('fitnessGuide').run(function ($state, $rootScope, $location, $localStorage, AuthService) {
   $rootScope.$on('$stateChangeStart',
     function (event, next, current) {
       AuthService.getUserStatus();
       if (next.access.restricted &&
-          !AuthService.isLoggedIn()) {
+          !$localStorage.currentUser) {
             event.preventDefault();
             $state.go('login')
       }

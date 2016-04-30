@@ -1,19 +1,15 @@
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../app/models/userSchema.js');
 
-
 module.exports = function(passport) {
-
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
-
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
             done(err, user);
         });
     });
-
     passport.use('local-signup', new LocalStrategy({
         usernameField : 'email',
         passwordField : 'password',
@@ -21,11 +17,9 @@ module.exports = function(passport) {
     },
     function(req, email, password, done) {
         process.nextTick(function() {
-
         User.findOne({ 'local.email' :  email }, function(err, user) {
             if (err)
                 return done(err);
-
             if (user) {
                 return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
             } else {
@@ -59,6 +53,5 @@ module.exports = function(passport) {
 
                return done(null, user);
            });
-
        }));
 };
