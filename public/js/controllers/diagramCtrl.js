@@ -71,7 +71,11 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
   }
 
   $scope.checkForAdmin = function() {
-    mainService.checkForAdmin()
+    if (mainService.currentUser.admin === false) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   $scope.showDirections = function() {

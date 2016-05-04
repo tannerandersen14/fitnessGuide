@@ -15,7 +15,7 @@ angular.module('fitnessGuide').factory('AuthService',
     });
 
     function isLoggedIn() {
-      if(user) {
+      if($localStorage.currentUser) {
         return true;
       } else {
         return false;

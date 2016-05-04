@@ -316,6 +316,7 @@ angular.module('fitnessGuide').controller('logoutController',
         .then(function () {
           mainService.currentUser = {};
           mainService.userPageUser = {};
+          $localStorage.$reset();
           $location.path('login');
         });
         console.log('logout')
