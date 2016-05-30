@@ -22,7 +22,7 @@ var User = require('./app/models/userSchema.js');
 require('./config/passport')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect(configDB.database);
+mongoose.connect(process.env.MONGOLAB_URI || configDB.database);
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
