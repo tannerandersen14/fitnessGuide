@@ -9,7 +9,7 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   localStrategy = require('passport-local').Strategy,
   app = express(),
-  port = 9010;
+  port = process.env.PORT || 9010;
 
 var Password = require('./app/models/passwordModel.js');
 var UserLift = require('./app/models/userLifts.js');
@@ -19,7 +19,7 @@ var User = require('./app/models/userSchema.js');
 require('./config/passport')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect(process.env.MONGOLAB_CHARCOAL_URI || 'mongodb://localhost/fitness-guide');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/fitness-guide');
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
@@ -30,6 +30,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(cookieParser());
+app.use(require('express-session')({
+    secret: 'imasdfjlkjflds123tannio90',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(session({secret: configDB.secret}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
