@@ -22,7 +22,7 @@ var User = require('./app/models/userSchema.js');
 require('./config/passport')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/fitness-guide');
+mongoose.connect(process.env.MONGOLAB_CHARCOAL_URI || 'mongodb://localhost/fitness-guide');
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
@@ -33,12 +33,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(cookieParser());
-app.use(require('express-session')({
-    secret: 'imasdfjlkjflds123tannio90',
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(session({secret: 'imasdfjlkjflds123tannio90'}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
