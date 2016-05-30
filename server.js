@@ -1,16 +1,13 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
-  cors = require('cors'),
   session = require('express-session'),
   mongoose = require('mongoose'),
   logger = require('morgan'),
   passport = require('passport'),
-  flash = require('connect-flash'),
   hash = require('bcrypt-nodejs'),
   path = require('path'),
   cookieParser = require('cookie-parser'),
   localStrategy = require('passport-local').Strategy,
-  configDB = require('./config/database.js'),
   app = express(),
   port = 9010;
 
