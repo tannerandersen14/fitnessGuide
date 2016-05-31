@@ -30,12 +30,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(cookieParser());
-app.use(require('express-session')({
+app.use(session({
     secret: 'imasdfjlkjflds123tannio90',
     resave: false,
     saveUninitialized: false
 }));
-app.use(session({secret: 'imasdfjlkjflds123tannio90'}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
