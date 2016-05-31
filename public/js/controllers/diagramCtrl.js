@@ -28,6 +28,10 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
   $scope.directions = mainService.directions;
   $scope.$watch($scope.directions);
   $scope.liftDay = {};
+  
+  $scope.consoleLift = function(lift) {
+    console.log(lift);
+  };
 
   $scope.getTemplateLift = function() {
     mainService.getTemplateLift().then(function(response) {
@@ -190,6 +194,7 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
     mainService.getLifts().then(function(response) {
       $scope.lifts = response.data;
       for (var i = 0; i < $scope.lifts.length; i++) {
+        $scope.lifts[i].image = $scope.lifts[i].image.split('/').pop();
         if ($scope.lifts[i].type === "abdominal") {
           liftService.abdominalLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.abdominalLifts)
