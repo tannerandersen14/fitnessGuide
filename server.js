@@ -35,7 +35,7 @@ app.use(require('express-session')({
     resave: false,
     saveUninitialized: false
 }));
-app.use(session({secret: configDB.secret}));
+app.use(session({secret: 'imasdfjlkjflds123tannio90'}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
