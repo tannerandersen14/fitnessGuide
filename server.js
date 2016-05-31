@@ -8,7 +8,7 @@ var express = require('express'),
   path = require('path'),
   cookieParser = require('cookie-parser'),
   localStrategy = require('passport-local').Strategy,
-  app = express(),
+  app = express();
   port = process.env.PORT || 9010;
 
 var Password = require('./app/models/passwordModel.js');
@@ -19,7 +19,7 @@ var User = require('./app/models/userSchema.js');
 require('./config/passport')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/fitness-guide');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fitness-guide');
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
