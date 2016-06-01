@@ -6,7 +6,7 @@
 
     <div class="workout-div" ng-repeat="lift in chestLifts">
       <h1>{{lift.name}}</h1>
-      <a href="{{lift.link}}"><img ng-src="https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/chest/{{lift.image}}"/></a>
+      <a href="{{lift.link}}"><img ng-src="{{lift.image}}"/></a>
       <ul ng-repeat="dir in lift.directions">
         <h3>
           <li>{{dir}}</li>

@@ -28,15 +28,10 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
   $scope.directions = mainService.directions;
   $scope.$watch($scope.directions);
   $scope.liftDay = {};
-  
-  $scope.consoleLift = function(lift) {
-    console.log(lift);
-  };
 
   $scope.getTemplateLift = function() {
     mainService.getTemplateLift().then(function(response) {
       mainService.templateLifts = response.data;
-      console.log(response.data)
     })
   }
   $scope.getTemplateLift();
@@ -86,74 +81,58 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
     if (mainService.directions === false) {
       mainService.directions = true;
       $state.reload();
-      console.log(mainService.directions)
     } else {
       mainService.directions = false;
       $state.reload();
-      console.log(mainService.directions)
     }
   }
 
   $scope.addUserLift = function(lift) {
       if ($scope.liftDay.day === 'sunday') {
       mainService.currentUser.sundayLifts.push(lift);
-      console.log(mainService.currentUser)
       mainService.addUserLift().then(function(response) {
-        console.log('okay');
         $scope.newLift = {};
         $scope.liftDay = {};
       })
     }
       else if ($scope.liftDay.day === 'monday') {
       mainService.currentUser.mondayLifts.push(lift);
-      console.log(mainService.currentUser)
       mainService.addUserLift().then(function(response) {
-        console.log('okay');
         $scope.newLift = {};
         $scope.liftDay = {};
       })
     }
       else if ($scope.liftDay.day === 'tuesday') {
       mainService.currentUser.tuesdayLifts.push(lift);
-      console.log(mainService.currentUser)
       mainService.addUserLift().then(function(response) {
-        console.log('okay');
         $scope.newLift = {};
         $scope.liftDay = {};
       })
     }
       else if ($scope.liftDay.day === 'wednesday') {
       mainService.currentUser.wednesdayLifts.push(lift);
-      console.log(mainService.currentUser)
       mainService.addUserLift().then(function(response) {
-        console.log('okay');
         $scope.newLift = {};
         $scope.liftDay = {};
       })
     }
       else if ($scope.liftDay.day === 'thursday') {
       mainService.currentUser.thursdayLifts.push(lift);
-      console.log(mainService.currentUser)
       mainService.addUserLift().then(function(response) {
-        console.log('okay');
         $scope.newLift = {};
         $scope.liftDay = {};
       })
     }
       else if ($scope.liftDay.day === 'friday') {
       mainService.currentUser.fridayLifts.push(lift);
-      console.log(mainService.currentUser)
       mainService.addUserLift().then(function(response) {
-        console.log('okay');
         $scope.newLift = {};
         $scope.liftDay = {};
       })
     }
       else if ($scope.liftDay.day === 'saturday') {
       mainService.currentUser.saturdayLifts.push(lift);
-      console.log(mainService.currentUser)
       mainService.addUserLift().then(function(response) {
-        console.log('okay');
         $scope.newLift = {};
         $scope.liftDay = {};
       })
@@ -175,7 +154,6 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
   $scope.addLift = function() {
     mainService.addLift($scope.newLift).then(function(response) {
       $scope.getLifts();
-      console.log($scope.newLift)
       $scope.newLift = {};
       $scope.newLift.link = '';
       $scope.newLift.image = '';
@@ -196,51 +174,67 @@ angular.module('fitnessGuide').controller('diagramCtrl', function($scope, $state
       for (var i = 0; i < $scope.lifts.length; i++) {
         $scope.lifts[i].image = $scope.lifts[i].image.split('/').pop();
         if ($scope.lifts[i].type === "abdominal") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/abdominals/" + $scope.lifts[i].image;
           liftService.abdominalLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.abdominalLifts)
         } else if ($scope.lifts[i].type === "bicep") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/biceps/" + $scope.lifts[i].image
           liftService.bicepLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.bicepLifts)
         } else if ($scope.lifts[i].type === "calf") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/calves/" + $scope.lifts[i].image
           liftService.calfLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.calfLifts)
         } else if ($scope.lifts[i].type === "chest") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/chest/" + $scope.lifts[i].image          
           liftService.chestLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.chestLifts)
         } else if ($scope.lifts[i].type === "forearm") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/forearms/" + $scope.lifts[i].image          
           liftService.forearmLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.forearmLifts)
         } else if ($scope.lifts[i].type === "frontdeltoid") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/frontdeltoids/" + $scope.lifts[i].image
           liftService.frontDeltoidLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.frontDeltoidLifts)
         } else if ($scope.lifts[i].type === "glute") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/glutes/" + $scope.lifts[i].image
           liftService.gluteLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.gluteLifts)
         } else if ($scope.lifts[i].type === "hamstring") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/hamstrings/" + $scope.lifts[i].image
           liftService.hamstringLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.hamstringLifts)
         } else if ($scope.lifts[i].type === "hip") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/hips/" + $scope.lifts[i].image
           liftService.hipLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.hipLifts)
         } else if ($scope.lifts[i].type === "lat") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/lats/" + $scope.lifts[i].image
           liftService.latLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.latLifts)
         } else if ($scope.lifts[i].type === "lowerback") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/lowerback/" + $scope.lifts[i].image
           liftService.lowerbackLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.lowerbackLifts)
         } else if ($scope.lifts[i].type === "oblique") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/obliques/" + $scope.lifts[i].image
           liftService.obliqueLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.obliqueLifts)
         } else if ($scope.lifts[i].type === "quad") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/quads/" + $scope.lifts[i].image
           liftService.quadLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.quadLifts)
         } else if ($scope.lifts[i].type === "reardeltoid") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/reardeltoids/" + $scope.lifts[i].image
           liftService.rearDeltoidLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.rearDeltoidLifts)
         } else if ($scope.lifts[i].type === "trap") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/traps/" + $scope.lifts[i].image
           liftService.trapLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.trapLifts)
         } else if ($scope.lifts[i].type === "tricep") {
+          $scope.lifts[i].image = "https://fitnessguideliftpictures.s3-us-west-2.amazonaws.com/triceps/" + $scope.lifts[i].image
           liftService.tricepLifts.push($scope.lifts[i]);
           $scope.removeDup(liftService.tricepLifts)
         } else {
