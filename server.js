@@ -19,7 +19,7 @@ var User = require('./app/models/userSchema.js');
 require('./config/passport')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/fitness-guide');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://generaluser:tantan@ds019633.mlab.com:19633/heroku_xgk7dd4g');
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
